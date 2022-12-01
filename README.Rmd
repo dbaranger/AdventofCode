@@ -1,0 +1,14 @@
+---
+title: "README"
+author: "David AA Baranger"
+date: "12/1/2022"
+output: md_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Advent of Code 2022
+
+Solutions to the [Advent of Code 2022 puzzles](https://adventofcode.com/2022/), written in R stats.
