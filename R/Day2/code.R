@@ -1,6 +1,6 @@
 library(data.table)
 library(dplyr)
-setwd("Day2")
+setwd("R/Day2")
 
 input = read.table(file = "input",sep = " ",stringsAsFactors = F,header =  F)
 colnames(input) = c("Them","Me")

@@ -1,6 +1,6 @@
 library(data.table)
 
-setwd("Day1")
+setwd("R/Day1")
 
 input = fread(file = "input",stringsAsFactors = F,na.strings = "",data.table = F)
 
