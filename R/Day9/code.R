@@ -6,14 +6,7 @@ library(data.tree)
 setwd("~/AdventofCode2022/R/Day9")
 input = read.table(file = "input",sep = "",stringsAsFactors = F,header =  F,fill = T)
 
-movement_grid = matrix(0,nrow = 1000,ncol = 1000)
-start.pos=data.frame(row=500,col=500)
-
-
-h.pos = start.pos
-t.pos = start.pos
-
-movement_grid[t.pos$row,t.pos$col] = 1
+################################################
 
 
 h.move  =function(direction,h.pos){
@@ -71,6 +64,15 @@ t.move=function(h.pos,t.pos,direction){
 
 ################################################################################
 
+movement_grid = matrix(0,nrow = 1000,ncol = 1000)
+start.pos=data.frame(row=500,col=500)
+
+
+h.pos = start.pos
+t.pos = start.pos
+
+movement_grid[t.pos$row,t.pos$col] = 1
+
 for(i in 1: dim(input)[1]){
 
   move.num = input$V2[i]
@@ -97,29 +99,21 @@ pos.info = data.frame(row=rep(500,10),col=rep(500,10))
 
 
 for(i in 1: dim(input)[1]){
-  #print(i/ dim(input)[1]*100)
   move.num = input$V2[i]
   direction = input$V1[i]
   for(j in 1:move.num){
-    #movement_grid = matrix(0,nrow = 20,ncol = 20)
-    #movement_grid[pos.info[1,1],pos.info[1,2]] =0
     # move H
     pos.info[1,] = h.move(direction = direction,h.pos = pos.info[1,])
     # check T
-    #movement_grid[pos.info[1,1],pos.info[1,2]] = 1
     for(k in 2:10){
 
     if(check.t(h.pos =  pos.info[(k-1),],t.pos =  pos.info[k,]) == 0){
-     # movement_grid[pos.info[k,1],pos.info[k,2]] =0
       pos.info[k,]  = t.move(h.pos = pos.info[(k-1),],t.pos = pos.info[k,] ,direction = direction)
-     # movement_grid[pos.info[k,1],pos.info[k,2]] = k
     }
 
       if(k==10){movement_grid[pos.info[k,1],pos.info[k,2]] = 1}
 
     }
-
-
 
     }
 }
